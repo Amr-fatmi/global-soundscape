@@ -33,8 +33,3 @@ def search():
         return jsonify({"results": data["results"]}), 200
     else:
         return jsonify({"error": "Freesound API failed"}), response.status_code
-
-   
-
-    
-

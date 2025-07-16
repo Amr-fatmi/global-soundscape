@@ -6,7 +6,6 @@ document.addEventListener("DOMContentLoaded", () => {
         '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>',
     }).addTo(map);
 
-    
     document.getElementById("search-form").addEventListener("submit", (event) => {
         event.preventDefault();
 
