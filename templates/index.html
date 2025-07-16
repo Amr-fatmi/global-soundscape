@@ -1,5 +1,25 @@
-{% extends "layout.html" %} {% block main %}
+{% extends "layout.html" %}
+{% block main %}
 
-<h1>Hello</h1>
+<main id="main-content">
+    <section id="introduction-section">
+        <div id="introduction-container">
+            <h1>Global Soundscape</h1>
+            <p>Explore the sounds of the world through an interactive map.</p>
+        </div>
+    </section>
+
+    <section id="search-section">
+        <form id="search-form" action="search" method="get">
+            <input type="search" name="q" id="search-input" placeholder="Search">
+            <input type="submit" value="Search">
+        </form>
+    </section>
+
+    <section id="map-section">
+        <div id="map"></div>
+    </section>
+</main>
 
 {% endblock %}
+
