@@ -4,20 +4,38 @@
 <main id="main-content">
     <section id="introduction-section">
         <div id="introduction-container">
-            <h1>Global Soundscape</h1>
-            <p>Explore the sounds of the world through an interactive map.</p>
+            <h1>Global Soundscape Explorer</h1>
+            <p>Explore the sounds of the world through an interactive map</p>
         </div>
     </section>
 
     <section id="search-section">
-        <form id="search-form" action="search" method="get">
-            <input type="search" name="q" id="search-input" placeholder="Search">
-            <input type="submit" value="Search">
-        </form>
+        <div id="search-container">
+            <form id="search-form" action="search" method="get">
+                <input type="search" name="q" id="search-input" placeholder="Search by city or region">
+                <input type="submit" value="Search">
+            </form>
+        </div>
     </section>
 
-    <section id="map-section">
-        <div id="map"></div>
+    <section id="map-and-sidebar-section">
+        <div id="map-container">
+            <div id="map"></div>
+        </div>
+
+        <div id="sidebar-container">
+            <canvas id="myChart"></canvas>
+
+            <div id="filter-by-tags-container">
+                <fieldset id="tags-field">
+                    <legend>Filter by tags</legend>
+                    <div>
+                        <input type="checkbox" id="all-tags" value="All tags" name="tag">
+                        <label for="all-tags">All tags</label>
+                    </div>
+                </fieldset>
+            </div>
+        </div>
     </section>
 </main>
 
