@@ -1,0 +1,9 @@
+export let DEFAULT_PAGE_SIZE = 30;
+export let LARGE_PAGE_SIZE = 50;
+export let MAX_PAGES = 3;
+export let DEFAULT_MAP_COORDS = [30, 0];
+export let DEFAULT_MAP_ZOOM = 2.5;
+export let LOCATING_ZOOM = 10;
+export let BASE_SOUND_API = "/sounds";
+export let BASE_SEARCH_API = "/search";
+export let NOMINATIM_API = "https://nominatim.openstreetmap.org";

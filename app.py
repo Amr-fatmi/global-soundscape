@@ -14,17 +14,14 @@ def get_freesound_data(params):
     url = "https://freesound.org/apiv2/search/text/"
     response = requests.get(url, params=params)
 
-    if response.status_code == 200:
-
+    try:
+        response = requests.get(url, params=params)
+        response.raise_for_status()
         data = response.json()
-
-        print(data["results"])
-
-        print(f"Data fetched successfully: 200")
-        print(f"Pages: {data["count"]}")
         return {"sounds": data["results"]}, 200
-    else:
-        return {"error": "Freesound API failed"}, response.status_code
+    except requests.exceptions.RequestException as e:
+        print(str(e))
+        return {"error": "Freesound API request failed"}, 500
 
 @app.route("/")
 def index():
@@ -38,9 +35,9 @@ def sounds():
         "query": "sound",
         "page": page,
         "page_size": page_size,
-        "filter": "duration:[0 TO 300] geotag:[* TO *]",
-        "fields": "id,name,geotag,previews,tags,username",
-        "sort": "score_desc",
+        "sort": "score",
+        "filter": "geotag:[* TO *] duration:[0 TO 300]",
+        "fields": "id,username,name,previews,duration,geotag,created,tags",
         "token": FREESOUND_API_KEY
     }
 
@@ -49,12 +46,20 @@ def sounds():
 
 @app.route("/search")
 def search():
-    location  = request.args.get("location")
-    if not location or not isinstance(location, str):
-        location = "sound"
-    
+    search = request.args.get("search", "")
+    if not isinstance(search, str) or not search.strip():
+        search = "sound"
+
+    terms = [term.strip() for term in search.split(",") if term.strip()]
+    if not terms:
+        terms = ["sound"]
+
+    search_query = " OR ".join(terms)
+
     params = {
-        "query": location,
+        "query": search_query,
+        "filter": "geotag:[* TO *] duration:[0 TO 300]",
+        "sort": "score",
         "fields": "id,username,name,previews,duration,geotag,created,tags",
         "page_size": 150,
         "page": 1,

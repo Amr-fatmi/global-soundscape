@@ -1,13 +1,10 @@
 {% extends "layout.html" %}
 {% block main %}
 
-<main id="main-content">
-    <section id="introduction-section">
-        <div id="introduction-container">
-            <h1>Global Soundscape Explorer</h1>
-            <p>Explore the sounds of the world through an interactive map</p>
-        </div>
-    </section>
+    <div id="introduction-container">
+        <h1>Global Soundscape Explorer</h1>
+        <p>Explore the sounds of the world through an interactive map</p>
+    </div>
 
     <section id="search-section">
         <div id="search-container">
@@ -19,25 +16,28 @@
     </section>
 
     <section id="map-and-sidebar-section">
+
         <div id="map-container">
+            <button id="search-area"  style="display: none;" type="button">Search area for sounds</button>
             <div id="map"></div>
         </div>
 
         <div id="sidebar-container">
-            <canvas id="myChart"></canvas>
 
-            <div id="filter-by-tags-container">
-                <fieldset id="tags-field">
-                    <legend>Filter by tags</legend>
-                    <div>
-                        <input type="checkbox" id="all-tags" value="All tags" name="tag">
-                        <label for="all-tags">All tags</label>
-                    </div>
-                </fieldset>
+            <div id="sidebar-button-container">
+                <button id="data-button" type="button"></button>
             </div>
+
+            <div id="chart-container">
+                <canvas id="myChart"></canvas>
+            </div>
+
+            <div id="sounds-trail-container">
+                <button id="play-trail" type="button">Play Trail</button>
+            </div>
+
         </div>
     </section>
-</main>
 
 {% endblock %}
 

@@ -2,3 +2,6 @@ __pycache__/
 *.pyc
 .venv/
 .env
+.static/script.js
+.static/script.js
+.static/js/logic/pageController.js
